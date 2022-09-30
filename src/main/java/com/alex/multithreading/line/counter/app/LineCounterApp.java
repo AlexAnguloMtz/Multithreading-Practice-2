@@ -30,9 +30,16 @@ public class LineCounterApp {
     /**
      * Run the app.
      *
-     * For each file name, display the name of the current Thread,
-     * display the name of the file, display the number of lines
-     * in the provided file and display the time spent in this operation.
+     * For each file name:
+     * 1) Display the name of the current Thread
+     * 2) Display the name of the file
+     * 3) Display the number of lines in the provided file
+     * 4) Display the time spent in this operation
+     *
+     * After that:
+     * 1) Display the total number of lines of all files
+     * 2) Display the total amount of time spent in performing
+     *    all the mentioned steps for all the provided files
      *
      * @param fileNames the file names
      */
