@@ -1,4 +1,4 @@
-package com.alex.multithreading;
+package com.alex.multithreading.counter;
 
 public interface Counter {
 

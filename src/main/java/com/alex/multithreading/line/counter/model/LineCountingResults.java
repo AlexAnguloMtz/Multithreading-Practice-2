@@ -1,14 +1,12 @@
-package com.alex.multithreading;
-
-import java.io.File;
+package com.alex.multithreading.line.counter.model;
 
 /**
- *  Data transfer class to transport the name of a file
- *  and the number of lines it contains
+ *  Immutable data transfer class to transport the
+ *  obtained results when running the application
  *
  *  @author Alex Angulo
  */
-class LineCountingResults {
+public class LineCountingResults {
 
     private final String threadName;
     private final String fileName;

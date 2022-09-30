@@ -1,6 +1,6 @@
-package com.alex.multithreading;
+package com.alex.multithreading.counter;
 
-class SimpleCounter implements Counter {
+public class SimpleCounter implements Counter {
     
      private long count;
      

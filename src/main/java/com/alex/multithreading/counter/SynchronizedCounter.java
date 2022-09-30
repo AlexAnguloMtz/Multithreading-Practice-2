@@ -1,6 +1,7 @@
-package com.alex.multithreading;
+package com.alex.multithreading.counter;
 
-class SynchronizedCounter implements Counter {
+
+public class SynchronizedCounter implements Counter {
 
     private long count;
 

@@ -1,4 +1,8 @@
-package com.alex.multithreading;
+package com.alex.multithreading.line.counter.model;
+
+import com.alex.multithreading.chronometer.Chronometer;
+import com.alex.multithreading.counter.Counter;
+import com.alex.multithreading.counter.SimpleCounter;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +17,7 @@ import static java.lang.Thread.currentThread;
  *
  * @author Alex Angulo
  */
-class LineCounter implements Runnable {
+public class LineCounter implements Runnable {
 
     private static final String COULD_NOT_READ_FILE = "Could not read file: %s";
 

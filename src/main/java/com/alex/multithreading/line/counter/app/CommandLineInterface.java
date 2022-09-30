@@ -1,8 +1,10 @@
-package com.alex.multithreading;
+package com.alex.multithreading.line.counter.app;
+
+import com.alex.multithreading.line.counter.model.LineCountingResults;
 
 import static java.lang.String.format;
 
-class CommandLineInterface {
+public class CommandLineInterface {
 
     private static final String NUMBER_OF_LINES_IN_FILE_MESSAGE =
             "\nThread name: %s \nFile: %s \nNumber of lines: %d \nTime passed: %d milliseconds";

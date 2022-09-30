@@ -1,5 +1,8 @@
 package com.alex.multithreading;
 
+import com.alex.multithreading.counter.SynchronizedCounter;
+import com.alex.multithreading.line.counter.app.LineCounterApp;
+
 /**
  * Run the application with a synchronized counter for all Thread objects
  */

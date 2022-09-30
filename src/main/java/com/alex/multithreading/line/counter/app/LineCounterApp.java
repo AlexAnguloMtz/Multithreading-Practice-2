@@ -1,7 +1,10 @@
-package com.alex.multithreading;
+package com.alex.multithreading.line.counter.app;
+
+import com.alex.multithreading.counter.Counter;
+import com.alex.multithreading.line.counter.model.LineCounter;
+import com.alex.multithreading.line.counter.model.LineCountingResults;
 
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import static java.util.Arrays.stream;
 
