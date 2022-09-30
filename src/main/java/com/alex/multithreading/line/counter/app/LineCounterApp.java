@@ -1,5 +1,6 @@
 package com.alex.multithreading.line.counter.app;
 
+import com.alex.multithreading.chronometer.Chronometer;
 import com.alex.multithreading.counter.Counter;
 import com.alex.multithreading.line.counter.model.LineCounter;
 import com.alex.multithreading.line.counter.model.LineCountingResults;
@@ -20,17 +21,22 @@ public class LineCounterApp {
 
     private final Counter counterForAllThreads;
     private final CommandLineInterface userInterface;
+    private final Chronometer chronometer;
 
     public LineCounterApp(Counter counterForAllThreads) {
         this.counterForAllThreads = counterForAllThreads;
         this.userInterface = new CommandLineInterface();
+        this.chronometer = new Chronometer();
     }
 
     public void run(String[] fileNames) {
-        long initialTime = currentTimeMillis();
+        long totalTime = chronometer.measureTime( () -> doRun(fileNames) );
+        displayTotalTime(totalTime);
+    }
+
+    private void doRun(String[] fileNames) {
         stream(fileNames).forEach(fileName -> countLinesInNewThread(fileName));
         displayTotalLineCount();
-        System.out.printf("Total time for all lines = %d milliseconds\n", currentTimeMillis() - initialTime);
     }
 
     private void countLinesInNewThread(String fileName) {
@@ -65,6 +71,11 @@ public class LineCounterApp {
     private void displayTotalLineCount() {
         userInterface.displayTotalLineCount(totalLineCount());
     }
+
+    private void displayTotalTime(long totalTime) {
+        userInterface.displayTotalTime(totalTime);
+    }
+
 
     private long totalLineCount() {
         return counterForAllThreads.get();
