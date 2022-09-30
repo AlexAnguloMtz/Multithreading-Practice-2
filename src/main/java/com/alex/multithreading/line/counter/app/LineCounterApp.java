@@ -4,18 +4,16 @@ import com.alex.multithreading.chronometer.Chronometer;
 import com.alex.multithreading.counter.Counter;
 import com.alex.multithreading.counter.impl.DoubleCounterDecorator;
 import com.alex.multithreading.counter.impl.SimpleCounter;
-import com.alex.multithreading.line.counter.model.LineCounter;
-import com.alex.multithreading.line.counter.model.LineCountingResults;
 
 import java.util.function.Consumer;
 
 import static java.util.Arrays.stream;
 
 /**
- *  App to count all the lines in all the files
- *  with the provided file names in a concurrent manner
+ *  App to count all the lines in all the files with the provided file names.
+ *  Each file will be handled in a new Thread.
  *
- *  @author Alex Angulo
+ * @author Alex Angulo
  */
 public class LineCounterApp {
 
@@ -29,7 +27,16 @@ public class LineCounterApp {
         this.chronometer = new Chronometer();
     }
 
-    public void run(String[] fileNames) {
+    /**
+     * Run the app.
+     *
+     * For each file name, display the name of the current Thread,
+     * display the name of the file, display the number of lines
+     * in the provided file and display the time spent in this operation.
+     *
+     * @param fileNames the file names
+     */
+    public void runWithFiles(String[] fileNames) {
         long totalTime = chronometer.measureTime( () -> doRun(fileNames) );
         displayTotalTime(totalTime);
     }
@@ -49,9 +56,7 @@ public class LineCounterApp {
 
     private void doCountLinesInNewThread(String fileName) throws InterruptedException {
 
-        Runnable lineCounter = lineCounterForFile(fileName);
-
-        Thread thread = new Thread(lineCounter);
+        Thread thread = new Thread(runnableForFile(fileName));
         thread.start();
 
         // We need a join() so we can get the final count of
@@ -60,16 +65,16 @@ public class LineCounterApp {
 
     }
 
-    private Runnable lineCounterForFile(String fileName) {
-        return new LineCounter(fileName, resultsConsumer(), decoratedCounter());
-    }
-
-    private Counter decoratedCounter() {
-        return new DoubleCounterDecorator(new SimpleCounter(), counterForAllThreads);
+    private Runnable runnableForFile(String fileName) {
+        return new LineCounterRunnable(fileName, decoratedCounter(), resultsConsumer());
     }
 
     private Consumer<LineCountingResults> resultsConsumer() {
         return results -> userInterface.display(results);
+    }
+
+    private Counter decoratedCounter() {
+        return new DoubleCounterDecorator(new SimpleCounter(), counterForAllThreads);
     }
 
     private void displayTotalLineCount() {
@@ -84,5 +89,6 @@ public class LineCounterApp {
     private long totalLineCount() {
         return counterForAllThreads.get();
     }
+
 
 }

@@ -1,7 +1,5 @@
 package com.alex.multithreading.line.counter.app;
 
-import com.alex.multithreading.line.counter.model.LineCountingResults;
-
 import static java.lang.String.format;
 
 /**
@@ -25,7 +23,7 @@ public class CommandLineInterface {
 
     private String messageOf(LineCountingResults results) {
         return format(RESULTS_TEMPLATE,
-                results.getThreadName(), results.getFileName(), results.getNumberOfLines(), results.getMilliseconds());
+                results.getThreadName(), results.getFileName(), results.getNumberOfLines(), results.getMillisecondsPassed());
     }
 
     private void displayMessage(String message) {

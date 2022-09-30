@@ -1,8 +1,7 @@
-package com.alex.multithreading.line.counter.model;
+package com.alex.multithreading.line.counter.app;
 
 /**
- *  Immutable data transfer class to transport the
- *  obtained results when running the application
+ *  Immutable data transfer class to transport the obtained results
  *
  *  @author Alex Angulo
  */
@@ -11,16 +10,16 @@ public class LineCountingResults {
     private final String threadName;
     private final String fileName;
     private final long numberOfLines;
-    private final long milliseconds;
+    private final long millisecondsPassed;
 
     public LineCountingResults(String threadName,
                                String filename,
                                long numberOfLines,
-                               long milliseconds) {
+                               long millisecondsPassed) {
         this.threadName = threadName;
         this.fileName = filename;
         this.numberOfLines = numberOfLines;
-        this.milliseconds = milliseconds;
+        this.millisecondsPassed = millisecondsPassed;
     }
 
     public String getThreadName() {
@@ -35,7 +34,7 @@ public class LineCountingResults {
         return numberOfLines;
     }
 
-    public long getMilliseconds() {
-        return milliseconds;
+    public long getMillisecondsPassed() {
+        return millisecondsPassed;
     }
 }

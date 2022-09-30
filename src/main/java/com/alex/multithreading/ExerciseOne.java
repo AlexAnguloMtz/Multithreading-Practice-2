@@ -13,7 +13,7 @@ class ExerciseOne {
 
         display("\nRunning app with a non-synchronized counter");
 
-        new LineCounterApp(new SimpleCounter()).run(args);
+        new LineCounterApp(new SimpleCounter()).runWithFiles(args);
 
     }
 
