@@ -12,7 +12,7 @@ import static java.util.Arrays.stream;
 
 /**
  *  App to count all the lines in all the files
- *  with the provided file names
+ *  with the provided file names in a concurrent manner
  *
  *  @author Alex Angulo
  */
