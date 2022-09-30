@@ -4,6 +4,8 @@ import static java.lang.System.currentTimeMillis;
 
 /**
  * Class to measure the running time of a Runnable
+ *
+ * @author Alex Angulo
  */
 public class Chronometer {
 

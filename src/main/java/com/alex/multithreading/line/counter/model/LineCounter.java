@@ -12,8 +12,9 @@ import java.util.function.Consumer;
 import static java.lang.Thread.currentThread;
 
 /**
- *  Runnable implementation that takes the name of one file
- *  and determines the number of lines in it
+ *  Runnable implementation that takes the name of one file,
+ *  determines the number of lines in it, the total time spent
+ *  in counting these lines and the name of the current Thread.
  *
  * @author Alex Angulo
  */

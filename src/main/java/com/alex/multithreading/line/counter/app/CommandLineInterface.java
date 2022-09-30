@@ -4,6 +4,11 @@ import com.alex.multithreading.line.counter.model.LineCountingResults;
 
 import static java.lang.String.format;
 
+/**
+ * Representation of a command line interface
+ *
+ * @author Alex Angulo
+ */
 public class CommandLineInterface {
 
     private static final String NUMBER_OF_LINES_IN_FILE_MESSAGE =
