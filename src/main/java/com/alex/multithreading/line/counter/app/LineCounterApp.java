@@ -6,6 +6,8 @@ import com.alex.multithreading.line.counter.model.LineCountingResults;
 
 import java.util.function.Consumer;
 
+import static java.lang.String.format;
+import static java.lang.System.currentTimeMillis;
 import static java.util.Arrays.stream;
 
 /**
@@ -25,8 +27,10 @@ public class LineCounterApp {
     }
 
     public void run(String[] fileNames) {
+        long initialTime = currentTimeMillis();
         stream(fileNames).forEach(fileName -> countLinesInNewThread(fileName));
         displayTotalLineCount();
+        System.out.printf("Total time for all lines = %d milliseconds\n", currentTimeMillis() - initialTime);
     }
 
     private void countLinesInNewThread(String fileName) {
