@@ -1,7 +1,6 @@
 package com.alex.multithreading.line.counter.app;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 /**
  *  Immutable data transfer class to transport the obtained results
