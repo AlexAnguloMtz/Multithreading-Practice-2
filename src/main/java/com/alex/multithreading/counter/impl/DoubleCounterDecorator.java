@@ -11,6 +11,9 @@ import com.alex.multithreading.counter.Counter;
  * Each time the client code adds a value to this object,
  * both the main Counter and the secondary Counter will be updated.
  *
+ * The class that instantiates this class should hold a reference
+ * to the secondary Counter object, to be able to retrieve its value
+ *
  * @author Alex Angulo
  */
 public class DoubleCounterDecorator implements Counter {
