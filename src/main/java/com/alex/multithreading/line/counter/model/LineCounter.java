@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.function.Consumer;
 
+import static java.lang.String.format;
 import static java.lang.Thread.currentThread;
 
 /**
@@ -56,7 +57,7 @@ public class LineCounter implements Runnable {
         try (var reader = new BufferedReader(new FileReader(filename))) {
             countLinesWith(reader);
         } catch (Exception exception) {
-            throw new RuntimeException(COULD_NOT_READ_FILE);
+            throw new RuntimeException(format(COULD_NOT_READ_FILE, filename));
         }
     }
 
