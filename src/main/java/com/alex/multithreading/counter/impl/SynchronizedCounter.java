@@ -1,4 +1,6 @@
-package com.alex.multithreading.counter;
+package com.alex.multithreading.counter.impl;
+
+import com.alex.multithreading.counter.Counter;
 
 /**
  * Synchronized implementation of a Counter

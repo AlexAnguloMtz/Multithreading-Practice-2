@@ -2,7 +2,8 @@ package com.alex.multithreading.line.counter.app;
 
 import com.alex.multithreading.chronometer.Chronometer;
 import com.alex.multithreading.counter.Counter;
-import com.alex.multithreading.counter.SimpleCounter;
+import com.alex.multithreading.counter.impl.DoubleCounterDecorator;
+import com.alex.multithreading.counter.impl.SimpleCounter;
 import com.alex.multithreading.line.counter.model.LineCounter;
 import com.alex.multithreading.line.counter.model.LineCountingResults;
 

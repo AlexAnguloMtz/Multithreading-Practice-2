@@ -1,6 +1,6 @@
 package com.alex.multithreading;
 
-import com.alex.multithreading.counter.SynchronizedCounter;
+import com.alex.multithreading.counter.impl.SynchronizedCounter;
 import com.alex.multithreading.line.counter.app.LineCounterApp;
 
 /**
