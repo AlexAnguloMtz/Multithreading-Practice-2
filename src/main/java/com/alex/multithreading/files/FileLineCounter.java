@@ -17,11 +17,18 @@ public class FileLineCounter {
 
     private static final String COULD_NOT_READ_FILE = "Could not read file: %s";
 
-    public void countLinesInFile(String filename, Counter counter) {
-        try (var reader = new BufferedReader(new FileReader(filename))) {
+    /**
+     * Reads all the lines in a file with the provided file name
+     * and adds the number of lines to the received Counter object
+     *
+     * @param fileName  the name of the file
+     * @param counter   the Counter to count the number of lines
+     */
+    public void countLinesInFile(String fileName, Counter counter) {
+        try (var reader = new BufferedReader(new FileReader(fileName))) {
             countLinesWith(reader, counter);
         } catch (Exception exception) {
-            throw new RuntimeException(format(COULD_NOT_READ_FILE, filename));
+            throw new RuntimeException(format(COULD_NOT_READ_FILE, fileName));
         }
     }
 
