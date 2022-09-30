@@ -11,7 +11,7 @@ import static java.lang.String.format;
  */
 public class CommandLineInterface {
 
-    private static final String NUMBER_OF_LINES_IN_FILE_MESSAGE =
+    private static final String RESULTS_TEMPLATE =
             "\nThread name: %s \nFile: %s \nNumber of lines: %d \nTime passed: %d milliseconds";
 
     private static final String TOTAL_NUMBER_OF_LINES = "\nTotal number of lines in all files: %d";
@@ -23,7 +23,7 @@ public class CommandLineInterface {
     }
 
     private String messageOf(LineCountingResults results) {
-        return format(NUMBER_OF_LINES_IN_FILE_MESSAGE,
+        return format(RESULTS_TEMPLATE,
                 results.getThreadName(), results.getFileName(), results.getNumberOfLines(), results.getMilliseconds());
     }
 
