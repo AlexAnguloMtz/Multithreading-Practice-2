@@ -2,7 +2,6 @@ package com.alex.multithreading.line.counter.model;
 
 import com.alex.multithreading.chronometer.Chronometer;
 import com.alex.multithreading.counter.Counter;
-import com.alex.multithreading.counter.SimpleCounter;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -25,17 +24,15 @@ public class LineCounter implements Runnable {
 
     private final String filename;
     private final Consumer<LineCountingResults> resultsConsumer;
-    private final Counter externalCounter;
-    private final Counter ownCounter;
+    private final Counter counter;
     private final Chronometer chronometer;
 
     public LineCounter(String filename,
                        Consumer<LineCountingResults> resultsConsumer,
-                       Counter externalCounter) {
+                       Counter counter) {
         this.filename = filename;
         this.resultsConsumer = resultsConsumer;
-        this.externalCounter = externalCounter;
-        this.ownCounter = new SimpleCounter();
+        this.counter = counter;
         this.chronometer = new Chronometer();
     }
 
@@ -63,10 +60,8 @@ public class LineCounter implements Runnable {
 
     private void countLinesWith(BufferedReader reader) throws IOException {
         String line = null;
-        while ((line = reader.readLine()) != null) {
-            ownCounter.add(1);
-            externalCounter.add(1);
-        }
+        while ((line = reader.readLine()) != null)
+            counter.add(1);
     }
 
     private LineCountingResults resultsWith(long totalTime) {
@@ -74,7 +69,7 @@ public class LineCounter implements Runnable {
     }
 
     private long numberOfLines() {
-        return ownCounter.get();
+        return counter.get();
     }
 
     private void sendToConsumer(LineCountingResults results) {

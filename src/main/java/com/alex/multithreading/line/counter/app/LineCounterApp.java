@@ -2,13 +2,12 @@ package com.alex.multithreading.line.counter.app;
 
 import com.alex.multithreading.chronometer.Chronometer;
 import com.alex.multithreading.counter.Counter;
+import com.alex.multithreading.counter.SimpleCounter;
 import com.alex.multithreading.line.counter.model.LineCounter;
 import com.alex.multithreading.line.counter.model.LineCountingResults;
 
 import java.util.function.Consumer;
 
-import static java.lang.String.format;
-import static java.lang.System.currentTimeMillis;
 import static java.util.Arrays.stream;
 
 /**
@@ -61,7 +60,11 @@ public class LineCounterApp {
     }
 
     private Runnable lineCounterForFile(String fileName) {
-        return new LineCounter(fileName, resultsConsumer(), counterForAllThreads);
+        return new LineCounter(fileName, resultsConsumer(), decoratedCounter());
+    }
+
+    private Counter decoratedCounter() {
+        return new DoubleCounterDecorator(new SimpleCounter(), counterForAllThreads);
     }
 
     private Consumer<LineCountingResults> resultsConsumer() {

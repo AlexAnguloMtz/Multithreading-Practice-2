@@ -15,7 +15,7 @@ public class CommandLineInterface {
             "\nThread name: %s \nFile: %s \nNumber of lines: %d \nTime passed: %d milliseconds";
 
     private static final String TOTAL_NUMBER_OF_LINES = "\nTotal number of lines in all files: %d";
-    
+
     private static final String TOTAL_TIME_SPENT = "Time spent in counting all lines: %d milliseconds";
 
 
