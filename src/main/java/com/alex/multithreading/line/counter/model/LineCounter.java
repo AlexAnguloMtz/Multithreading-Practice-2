@@ -48,11 +48,11 @@ public class LineCounter implements Runnable {
      */
     @Override
     public void run() {
-        long timeSpent = chronometer.measureTime( () -> countLinesInFile() );
+        long timeSpent = chronometer.measureTime( () -> countLinesInFile(filename) );
         sendToConsumer(resultsWith(timeSpent));
     }
 
-    private void countLinesInFile() {
+    private void countLinesInFile(String filename) {
         try (var reader = new BufferedReader(new FileReader(filename))) {
             countLinesWith(reader);
         } catch (Exception exception) {
