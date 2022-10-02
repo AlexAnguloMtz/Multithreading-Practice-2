@@ -11,7 +11,7 @@ class ExerciseOne {
 
     public static void main(String[] args) {
 
-        display("\nRunning app with a non-synchronized counter");
+        display("\nRunning app with a non-synchronized counter\n");
 
         new Application(new SimpleCounter()).runWithFiles(args);
 

@@ -11,7 +11,7 @@ class ExerciseTwo {
 
     public static void main(String[] args) {
 
-        display("\nRunning app with a synchronized counter");
+        display("\nRunning app with a synchronized counter\n");
 
         new Application(new SynchronizedCounter()).runWithFiles(args);
 

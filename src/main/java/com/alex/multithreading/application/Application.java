@@ -60,11 +60,11 @@ public class Application {
     }
 
     private void displayTimePassed(long timePassed) {
-        display(messageOfTimePassed(timePassed));
+        display(timePassedMessage(timePassed));
     }
 
-    private String messageOfTimePassed(long timePassed) {
-        return format("Total time passed: %d", timePassed);
+    private String timePassedMessage(long timePassed) {
+        return format("Total time passed: %d milliseconds", timePassed);
     }
 
     private String totalLinesMessage() {
