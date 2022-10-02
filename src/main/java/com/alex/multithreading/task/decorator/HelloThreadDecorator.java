@@ -21,6 +21,7 @@ public class HelloThreadDecorator extends TaskDecorator {
         return resultsOfExecution();
     }
 
+    @Override
     protected List<String> resultsOfWrappedTask() {
         return super.execute();
     }
