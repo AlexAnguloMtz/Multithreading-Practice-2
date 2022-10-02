@@ -24,18 +24,17 @@ public class ChronometerDecorator extends TaskDecorator {
     @Override
     public List<String> execute() {
         setFieldsWithDecoratedTask();
-        return results();
+        return resultsOfExecution();
     }
 
-    private List<String> results() {
-        List<String> results = new ArrayList<>();
-        results.add(resultForThisTask());
-        results.addAll(this.resultsOfWrappedTask);
-        return results;
-    }
-
-    private String resultForThisTask() {
+    @Override
+    protected String resultOfThisTask() {
         return format(RESULTS_TEMPLATE, this.timePassed);
+    }
+
+    @Override
+    protected List<String> resultsOfWrappedTask() {
+        return this.resultsOfWrappedTask;
     }
 
     private void setFieldsWithDecoratedTask() {

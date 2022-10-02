@@ -21,18 +21,11 @@ public class HelloThreadDecorator extends TaskDecorator {
         return resultsOfExecution();
     }
 
-    private List<String> resultsOfExecution() {
-        List<String> resultsOfExecution = new ArrayList<>();
-        resultsOfExecution.add(resultOfThisTask());
-        resultsOfExecution.addAll(resultsOfWrappedTask());
-        return resultsOfExecution;
-    }
-
-    private List<String> resultsOfWrappedTask() {
+    protected List<String> resultsOfWrappedTask() {
         return super.execute();
     }
 
-    private String resultOfThisTask() {
+    protected String resultOfThisTask() {
         return helloThreadMessage();
     }
 

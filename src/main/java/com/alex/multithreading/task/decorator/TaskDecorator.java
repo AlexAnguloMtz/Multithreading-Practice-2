@@ -2,6 +2,7 @@ package com.alex.multithreading.task.decorator;
 
 import com.alex.multithreading.task.Task;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,9 +18,20 @@ public abstract class TaskDecorator implements Task {
         this.task = task;
     }
 
+    protected abstract String resultOfThisTask();
+
+    protected abstract List<String> resultsOfWrappedTask();
+
     @Override
     public List<String> execute() {
         return task.execute();
+    }
+
+    protected List<String> resultsOfExecution() {
+        List<String> resultsOfExecution = new ArrayList<>();
+        resultsOfExecution.add(resultOfThisTask());
+        resultsOfExecution.addAll(resultsOfWrappedTask());
+        return resultsOfExecution;
     }
 
 }
