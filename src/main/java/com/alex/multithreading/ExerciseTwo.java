@@ -1,7 +1,7 @@
 package com.alex.multithreading;
 
+import com.alex.multithreading.application.Application;
 import com.alex.multithreading.counter.impl.SynchronizedCounter;
-import com.alex.multithreading.line.counter.app.LineCounterApp;
 
 /**
  * Run the application with a synchronized counter for all Thread objects
@@ -13,7 +13,7 @@ class ExerciseTwo {
 
         display("\nRunning app with a synchronized counter");
 
-        new LineCounterApp(new SynchronizedCounter()).runWithFiles(args);
+        new Application(new SynchronizedCounter()).runWithFiles(args);
 
     }
 

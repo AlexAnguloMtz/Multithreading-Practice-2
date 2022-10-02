@@ -1,6 +1,6 @@
 package com.alex.multithreading;
 
-import com.alex.multithreading.line.counter.app.LineCounterApp;
+import com.alex.multithreading.application.Application;
 import com.alex.multithreading.counter.impl.SimpleCounter;
 
 /**
@@ -13,7 +13,7 @@ class ExerciseOne {
 
         display("\nRunning app with a non-synchronized counter");
 
-        new LineCounterApp(new SimpleCounter()).runWithFiles(args);
+        new Application(new SimpleCounter()).runWithFiles(args);
 
     }
 
