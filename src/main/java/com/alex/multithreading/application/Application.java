@@ -2,6 +2,8 @@ package com.alex.multithreading.application;
 
 import com.alex.multithreading.chronometer.Chronometer;
 import com.alex.multithreading.counter.Counter;
+import com.alex.multithreading.counter.impl.DoubleCounterDecorator;
+import com.alex.multithreading.counter.impl.SimpleCounter;
 
 import static java.lang.String.format;
 import static java.util.Arrays.stream;
@@ -46,7 +48,11 @@ public class Application {
     }
 
     private Runnable runnableForFile(String fileName) {
-        return new ApplicationRunnable(fileName, counterForAllThreads);
+        return new ApplicationRunnable(fileName, doubleCounter());
+    }
+
+    private Counter doubleCounter() {
+        return new DoubleCounterDecorator(new SimpleCounter(), counterForAllThreads);
     }
 
     private void doRun(String[] fileNames) {

@@ -1,8 +1,6 @@
 package com.alex.multithreading.application;
 
 import com.alex.multithreading.counter.Counter;
-import com.alex.multithreading.counter.impl.DoubleCounterDecorator;
-import com.alex.multithreading.counter.impl.SimpleCounter;
 import com.alex.multithreading.task.Task;
 import com.alex.multithreading.task.decorator.ChronometerDecorator;
 import com.alex.multithreading.task.decorator.HelloThreadDecorator;
@@ -13,12 +11,12 @@ import java.util.List;
 public class ApplicationRunnable implements Runnable {
 
     private final String fileName;
-    private final Counter counterForAllThreads;
+    private final Counter counter;
     private final ResultsFormatter resultsFormatter;
 
-    public ApplicationRunnable(String fileName, Counter counterForAllThreads) {
+    public ApplicationRunnable(String fileName, Counter counter) {
         this.fileName = fileName;
-        this.counterForAllThreads = counterForAllThreads;
+        this.counter = counter;
         this.resultsFormatter = new ResultsFormatter();
     }
 
@@ -26,7 +24,7 @@ public class ApplicationRunnable implements Runnable {
     public void run() {
 
         // Initial task
-        Task countLinesTask = new CountLinesTask(fileName, decoratedCounter());
+        Task countLinesTask = new CountLinesTask(fileName, counter);
 
         // Decorate the initial task with some Decorators
         Task chronometerDecorator = new ChronometerDecorator(countLinesTask);
@@ -42,10 +40,6 @@ public class ApplicationRunnable implements Runnable {
 
     private String formatResults(List<String> resultsOfAllTasks) {
         return resultsFormatter.formatResults(resultsOfAllTasks);
-    }
-
-    private Counter decoratedCounter() {
-        return new DoubleCounterDecorator(new SimpleCounter(), counterForAllThreads);
     }
 
     private void display(String message) {
