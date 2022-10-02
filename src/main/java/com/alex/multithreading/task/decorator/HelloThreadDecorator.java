@@ -22,12 +22,13 @@ public class HelloThreadDecorator extends TaskDecorator {
     }
 
     @Override
-    protected List<String> resultsOfWrappedTask() {
-        return super.execute();
-    }
-
     protected String resultOfThisTask() {
         return helloThreadMessage();
+    }
+
+    @Override
+    protected List<String> resultsOfWrappedTask() {
+        return super.execute();
     }
 
     private String helloThreadMessage() {
