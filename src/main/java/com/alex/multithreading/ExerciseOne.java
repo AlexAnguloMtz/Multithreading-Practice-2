@@ -7,7 +7,7 @@ import com.alex.multithreading.counter.impl.SimpleCounter;
  * Run the application with a non-synchronized counter for all Thread objects
  */
 
-class ExerciseOne {
+class ExerciseOne extends AbstractExercise {
 
     public static void main(String[] args) {
 
@@ -15,10 +15,6 @@ class ExerciseOne {
 
         new Application(new SimpleCounter()).runWithFiles(args);
 
-    }
-
-    private static void display(String message) {
-        System.out.println(message);
     }
 
 }
